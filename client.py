@@ -1,9 +1,11 @@
 import time
 
 from opcua import Client
-from distributor import get_config, select_tags
+
+from distributor import get_config, select_tags, insert_tags_values
 
 config = get_config()
+
 
 def create_client():
     global client
@@ -22,16 +24,25 @@ def create_client():
     finally:
         client.disconnect()
 
+
+
+
 def process_client(client):
     tags = select_tags()
-    array_value = {}
+    dict_value = {}
     for tag in tags:
         value_node = client.get_node("ns=1;s=" + tag)
         value = value_node.get_value()
-        array_value[tag] = value
-
+        dict_value[tag] = value
     print("Read tags in PostgreSQL DB and values in OPC UA Server!")
-    for key in array_value:
-        print("{0} : {1}".format(key, array_value[key]))
-    time.sleep(int(config['cl_rate']))
+    for key in dict_value:
+        print("{0} : {1}".format(key, dict_value[key]))
+
+    # TODO: def_insert_in_database
+    insert_tags_values(dict_value)
+    try:
+        time.sleep(int(config['cl_rate']))
+    except KeyboardInterrupt as e:
+        print(f"Closing in manual mode {e}")
+
 

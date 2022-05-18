@@ -42,3 +42,24 @@ def select_tags():
         return [i[0] for i in cursor.fetchall()]
     except Error as e:
         print(f"The error {e} occurred")
+
+
+def insert_tags_values(dict_value):
+    config = get_config()
+    connect = psycopg2.connect(database="journal_kovikta",
+                               user="postgres",
+                               password="postgres",
+                               host="127.0.0.1",
+                               port=5432)
+
+    for key, value in dict_value.items():
+        print(key + " : " + str(type(key)))
+        # app_info.\"5min_params\"
+        sql_insert = f"INSERT INTO app_info.hour_params (val , hfrpok_id) VALUES (\'{value}\', \'{key}\')"
+        cursor = connect.cursor()
+        try:
+            cursor.execute(sql_insert)
+            connect.commit()
+            print("Add value")
+        except Error as e:
+            print(e)
