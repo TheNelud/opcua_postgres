@@ -13,29 +13,29 @@
     </database>
 
     <opcserver_master>
-        <opc_host_master>172.16.205.234</opc_host_master>
-        <opc_port_master>62544</opc_port_master>
+        <opc_host>172.16.205.234</opc_host>
+        <opc_port>62544</opc_port>
     </opcserver_master>
 
     <opcserver_slave>
-        <opc_host_slave>172.16.205.234</opc_host_slave>
-        <opc_port_slave>62544</opc_port_slave>
+        <opc_host>172.16.205.234</opc_host>
+        <opc_port>62544</opc_port>
     </opcserver_slave>
 
     <rate_5_min>
-        <cl_table>app_info.5min_params</cl_table>
+        <cl_table>app_info."5min_params"</cl_table>
         <cl_rate>5</cl_rate>
     </rate_5_min>
 
-<!--    <rate_1_hour>-->
-<!--        <cl_table>app_info.10min_params</cl_table>-->
-<!--        <cl_rate>60</cl_rate>-->
-<!--    </rate_1_hour>-->
+    <rate_1_hour>
+        <cl_table>app_info.hour_params</cl_table>
+        <cl_rate>60</cl_rate>
+    </rate_1_hour>
 
-<!--    <rate_1_day>-->
-<!--        <cl_table>app_info.50min_params</cl_table>-->
-<!--        <cl_rate>1440</cl_rate>-->
-<!--    </rate_1_day>-->
+    <rate_1_day>
+        <cl_table>app_info.sut_params</cl_table>
+        <cl_rate>24</cl_rate>
+    </rate_1_day>
 
 
 
