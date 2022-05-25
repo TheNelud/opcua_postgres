@@ -1,7 +1,10 @@
 import xml.etree.ElementTree as ET
-import psycopg2
+import psycopg2, log
 from psycopg2 import OperationalError
 from psycopg2._psycopg import Error
+
+
+logger = log.get_logger(__name__)
 
 
 def get_config(config_file="config.xml"):
@@ -25,11 +28,10 @@ def create_connection():
                                       password=config["database"]['db_password'],
                                       host=config["database"]['db_host'],
                                       port=config["database"]['db_port'])
-
-        print("Conncetion to PostgreSQL DB successful")
+        logger.info("Подключение к базе данных прошло успешно")
         return connection
     except OperationalError as e:
-        print(f"The error {e} occurred")
+        logger.warning(f"The error {e} occurred")
 
 
 def select_tags():
@@ -41,7 +43,7 @@ def select_tags():
         cursor.execute(sql_select)
         return [i[0] for i in cursor.fetchall()]
     except Error as e:
-        print(f"The error {e} occurred")
+        logger.warning(f"The error {e} occurred")
 
 
 def insert_tags_values(dict_value, to_which_table):
@@ -53,13 +55,11 @@ def insert_tags_values(dict_value, to_which_table):
                                port=5432)
 
     for key, value in dict_value.items():
-        print(key + " : " + str(type(key)))
         # app_info.\"5min_params\" config['rate_5_min']['cl_table']
         sql_insert = f"INSERT INTO {to_which_table} (val , hfrpok_id) VALUES (\'{value}\', \'{key}\')"
         cursor = connect.cursor()
         try:
             cursor.execute(sql_insert)
             connect.commit()
-            print("Add value")
         except Error as e:
-            print(e)
+            logger.warning(f"The error {e} occurred")

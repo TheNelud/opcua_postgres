@@ -29,7 +29,7 @@
 
     <rate_1_hour>
         <cl_table>app_info.hour_params</cl_table>
-        <cl_rate>60</cl_rate>
+        <cl_rate>10</cl_rate>
     </rate_1_hour>
 
     <rate_1_day>
@@ -37,6 +37,5 @@
         <cl_rate>24</cl_rate>
     </rate_1_day>
 
-
-
+    <path_log_file>J:\Python\COPCUA_py\log\info.log</path_log_file>
 </config>

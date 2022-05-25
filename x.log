@@ -1,0 +1,27 @@
+2022-05-25 14:46:56,074 - [WARNING] - [MainThread] - client - (client.py).create_client(20) - Connection to slave server: opc.tcp://172.16.205.234:62544
+2022-05-25 15:02:14,905 - [WARNING] - [MainThread] - client - (client.py).create_client(20) - Connection to slave server: opc.tcp://172.16.205.234:62544
+2022-05-25 15:02:15,072 - [WARNING] - [MainThread] - client - (client.py).process_client(42) - Пустые значения
+2022-05-25 15:03:15,820 - [WARNING] - [MainThread] - client - (client.py).create_client(20) - Connection to slave server: opc.tcp://172.16.205.234:62544
+2022-05-25 15:03:15,991 - [WARNING] - [MainThread] - client - (client.py).process_client(42) - Пустые значения
+2022-05-25 15:04:16,588 - [WARNING] - [MainThread] - client - (client.py).create_client(20) - Connection to slave server: opc.tcp://172.16.205.234:62544
+2022-05-25 15:04:16,752 - [WARNING] - [MainThread] - client - (client.py).process_client(42) - Пустые значения
+2022-05-25 15:05:32,258 - [WARNING] - [MainThread] - client - (client.py).process_client(42) - Пустые значения
+2022-05-25 15:06:32,999 - [WARNING] - [MainThread] - client - (client.py).process_client(42) - Пустые значения
+2022-05-25 15:07:41,617 - [WARNING] - [MainThread] - client - (client.py).process_client(42) - Пустые значения
+2022-05-25 15:07:46,906 - [WARNING] - [MainThread] - client - (client.py).process_client(42) - Пустые значения
+2022-05-25 15:07:47,118 - [WARNING] - [MainThread] - client - (client.py).process_client(42) - Пустые значения
+2022-05-25 15:07:52,553 - [WARNING] - [MainThread] - client - (client.py).process_client(42) - Пустые значения
+2022-05-25 15:07:57,844 - [WARNING] - [MainThread] - client - (client.py).process_client(42) - Пустые значения
+2022-05-25 15:07:58,082 - [WARNING] - [MainThread] - client - (client.py).process_client(42) - Пустые значения
+2022-05-25 15:08:03,363 - [WARNING] - [MainThread] - client - (client.py).process_client(42) - Пустые значения
+2022-05-25 15:08:08,784 - [WARNING] - [MainThread] - client - (client.py).process_client(42) - Пустые значения
+2022-05-25 15:08:08,999 - [WARNING] - [MainThread] - client - (client.py).process_client(42) - Пустые значения
+2022-05-25 15:08:14,283 - [WARNING] - [MainThread] - client - (client.py).process_client(42) - Пустые значения
+2022-05-25 15:08:19,562 - [WARNING] - [MainThread] - client - (client.py).process_client(42) - Пустые значения
+2022-05-25 15:08:19,778 - [WARNING] - [MainThread] - client - (client.py).process_client(42) - Пустые значения
+2022-05-25 15:08:25,045 - [WARNING] - [MainThread] - client - (client.py).process_client(42) - Пустые значения
+2022-05-25 15:08:30,329 - [WARNING] - [MainThread] - client - (client.py).process_client(42) - Пустые значения
+2022-05-25 15:08:30,568 - [WARNING] - [MainThread] - client - (client.py).process_client(42) - Пустые значения
+2022-05-25 15:08:35,815 - [WARNING] - [MainThread] - client - (client.py).process_client(42) - Пустые значения
+2022-05-25 15:08:41,198 - [WARNING] - [MainThread] - client - (client.py).process_client(42) - Пустые значения
+2022-05-25 15:08:41,434 - [WARNING] - [MainThread] - client - (client.py).process_client(42) - Пустые значения
