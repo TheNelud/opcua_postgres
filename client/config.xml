@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config>
+    <database>
+    <!-- Подключение к базе данных журнала -->
+        <db_name>journal_kovikta</db_name>
+        <db_user>postgres</db_user>
+        <db_password>Potok_DU</db_password>
+        <db_host>10.93.63.13</db_host>
+        <db_port>5432</db_port>
+
+    <!-- Таблица для считывания тегов для OPC и записи в базу данных-->
+        <tb_name>app_info.test_table</tb_name>
+        <tb_column_tag>tag_name</tb_column_tag>
+
+    <!-- Таблица для считывания и записи на OPC -->
+        <data_to_alpha>public.data_to_alpha</data_to_alpha>
+        <alpha_column_tag>tag_name</alpha_column_tag>
+        <alpha_column_value>value</alpha_column_value>
+    </database>
+
+    <!-- Подключение к OPC серверу  -->
+    <opcserver_master>
+        <opc_host>10.93.63.10</opc_host>
+        <opc_port>62544</opc_port>
+    </opcserver_master>
+
+    <opcserver_slave>
+        <opc_host>10.93.63.11</opc_host>
+        <opc_port>62544</opc_port>
+    </opcserver_slave>
+
+    <!-- Настроки времени записи в базу данных -->
+    <cl_value_volumn>val</cl_value_volumn>
+    <cl_column_tag>hfrpok_id</cl_column_tag>
+
+    <rate_5_min>
+        <!-- <cl_table>app_info.table</cl_table> -->
+        <cl_table>app_info."5min_params"</cl_table>
+        <cl_rate>5</cl_rate>
+    </rate_5_min>
+
+    <rate_1_hour>
+        <cl_table>app_info.hour_params</cl_table>
+        <cl_rate>60</cl_rate>
+    </rate_1_hour>
+
+    <rate_1_day>
+        <cl_table>app_info.sut_params</cl_table>
+        <cl_rate>24</cl_rate>
+    </rate_1_day>
+    
+
+    <!--  -->
+    <time_zone>Europe/Moscow</time_zone>
+    <!-- Место хранение логов -->
+    <path_log_file>J:\Python\COPCUA_py\log\info.log</path_log_file>
+</config>

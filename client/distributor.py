@@ -1,5 +1,8 @@
+from datetime import datetime
+from time import time
 import xml.etree.ElementTree as ET
 import psycopg2, log
+import pytz
 from psycopg2 import OperationalError
 from psycopg2._psycopg import Error
 
@@ -37,29 +40,45 @@ def create_connection():
 def select_tags():
     config = get_config()
     connect = create_connection()
-    sql_select = f"SELECT {config['database']['tb_column_tag']} FROM {config['database']['tb_name']} WHERE {config['database']['tb_column_tag']} IS NOT NULL "
+    sql_select = f"SELECT {config['database']['tb_column_tag']}, hfrpok FROM {config['database']['tb_name']} WHERE hfrpok IS NOT NULL "
     cursor = connect.cursor()
     try:
         cursor.execute(sql_select)
-        return [i[0] for i in cursor.fetchall()]
+        return [i for i in cursor.fetchall()]
     except Error as e:
         logger.warning(f"The error {e} occurred")
 
 
+def select_hfrpok():
+    config = get_config()
+    connect = create_connection()
+    sql_hfrpok = f"SELECT hfrpok FROM {config['database']['tb_name']} "
+    cursor = connect.cursor()
+    dict_hfrpok = [elem for elem in cursor.fetchall()]
+
+
 def insert_tags_values(dict_value, to_which_table):
     config = get_config()
-    connect = psycopg2.connect(database="journal_kovikta",
-                               user="postgres",
-                               password="postgres",
-                               host="127.0.0.1",
-                               port=5432)
+    # connect = psycopg2.connect(database="journal_kovikta",
+    #                            user="postgres",
+    #                            password="postgres",
+    #                            host="127.0.0.1",
+    #                            port=5432)
+    connect = create_connection()
+
+    # tz = pytz.timezone(config['time_zone'])
 
     for key, value in dict_value.items():
+        timestamp = datetime.now()
         # app_info.\"5min_params\" config['rate_5_min']['cl_table']
-        sql_insert = f"INSERT INTO {to_which_table} (val , hfrpok_id) VALUES (\'{value}\', \'{key}\')"
+        # sql_insert = f"INSERT INTO {to_which_table} ({config['cl_value_volumn']} , {config['cl_column_tag']}) VALUES (\'{value}\', \'{key}\')"
+        sql_insert = f"INSERT INTO {to_which_table} (val ,timestamp ,hfrpok_id) VALUES (\'{value}\', \'{timestamp}\', \'{key}\')"
         cursor = connect.cursor()
         try:
             cursor.execute(sql_insert)
             connect.commit()
         except Error as e:
             logger.warning(f"The error {e} occurred")
+
+
+
