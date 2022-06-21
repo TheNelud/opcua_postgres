@@ -1819,3 +1819,27 @@ LINE 1: ...fo.table (val ,timestamp ,hfrpok_id) VALUES ('0', '165520452...
 2022-06-14 14:03:28,178 - [WARNING] - client - (client.py).create_client(20) - Connection to slave server: opc.tcp://10.93.63.10:62544
 2022-06-14 14:03:34,959 - [WARNING] - client - (client.py).process_client(53) - Пустые значения
 2022-06-14 14:05:14,193 - [WARNING] - client - (client.py).process_client(53) - Пустые значения
+2022-06-20 08:45:51,523 - [WARNING] - distributor - (distributor.py).create_connection(37) - The error connection to server at "10.93.63.13", port 5432 failed: Connection timed out (0x0000274C/10060)
+	Is the server running on that host and accepting TCP/IP connections?
+ occurred
+2022-06-20 08:51:34,638 - [WARNING] - distributor - (distributor.py).create_connection(37) - The error connection to server at "10.93.63.13", port 5432 failed: Connection timed out (0x0000274C/10060)
+	Is the server running on that host and accepting TCP/IP connections?
+ occurred
+2022-06-20 08:53:43,200 - [WARNING] - distributor - (distributor.py).create_connection(37) - The error connection to server at "10.93.63.13", port 5432 failed: Connection timed out (0x0000274C/10060)
+	Is the server running on that host and accepting TCP/IP connections?
+ occurred
+2022-06-20 08:55:54,157 - [WARNING] - distributor - (distributor.py).create_connection(37) - The error connection to server at "10.93.63.13", port 5432 failed: Connection timed out (0x0000274C/10060)
+	Is the server running on that host and accepting TCP/IP connections?
+ occurred
+2022-06-20 09:29:39,304 - [WARNING] - client - (client.py).create_client(19) - Connection to slave server: opc.tcp://10.93.63.10:62544
+2022-06-20 09:57:39,078 - [WARNING] - client - (client.py).create_client_post_alpha(35) - Connection to slave server: opc.tcp://127.0.0.1:4050
+2022-06-20 13:49:05,884 - [WARNING] - client - (client.py).create_client_post_alpha(36) - Connection to slave server: opc.tcp://127.0.0.1:4050
+2022-06-20 13:49:51,430 - [WARNING] - client - (client.py).create_client_post_alpha(36) - Connection to slave server: opc.tcp://127.0.0.1:4050
+2022-06-20 13:56:32,963 - [WARNING] - client - (client.py).create_client_post_alpha(36) - Connection to slave server: opc.tcp://127.0.0.1:4050
+2022-06-20 14:00:17,331 - [WARNING] - client - (client.py).create_client_post_alpha(36) - Connection to slave server: opc.tcp://127.0.0.1:4050
+2022-06-20 14:10:24,113 - [WARNING] - client - (client.py).create_client_post_alpha(43) - Connection to slave server: opc.tcp://127.0.0.1:4050
+2022-06-20 14:20:41,451 - [WARNING] - client - (client.py).create_client_post_alpha(43) - Connection to slave server: opc.tcp://127.0.0.1:4050
+2022-06-20 14:51:25,723 - [WARNING] - client - (client.py).create_client_post_alpha(43) - Connection to slave server: opc.tcp://127.0.0.1:4050
+2022-06-20 14:53:54,904 - [WARNING] - client - (client.py).create_client_post_alpha(43) - Connection to slave server: opc.tcp://127.0.0.1:4050
+2022-06-20 14:54:24,210 - [WARNING] - client - (client.py).create_client_post_alpha(43) - Connection to slave server: opc.tcp://127.0.0.1:4050
+2022-06-21 14:14:07,576 - [WARNING] - client - (client.py).create_client_post_alpha(44) - Connection to slave server: opc.tcp://127.0.0.1:4050

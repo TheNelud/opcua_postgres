@@ -3,7 +3,7 @@ from time import time
 import xml.etree.ElementTree as ET
 import psycopg2, log
 import pytz
-from psycopg2 import OperationalError
+from psycopg2 import *
 from psycopg2._psycopg import Error
 
 
@@ -47,6 +47,9 @@ def select_tags():
         return [i for i in cursor.fetchall()]
     except Error as e:
         logger.warning(f"The error {e} occurred")
+    finally: 
+        cursor.close()
+        connect.close()
 
 
 def select_hfrpok():
@@ -59,11 +62,6 @@ def select_hfrpok():
 
 def insert_tags_values(dict_value, to_which_table):
     config = get_config()
-    # connect = psycopg2.connect(database="journal_kovikta",
-    #                            user="postgres",
-    #                            password="postgres",
-    #                            host="127.0.0.1",
-    #                            port=5432)
     connect = create_connection()
 
     # tz = pytz.timezone(config['time_zone'])
@@ -79,6 +77,20 @@ def insert_tags_values(dict_value, to_which_table):
             connect.commit()
         except Error as e:
             logger.warning(f"The error {e} occurred")
+        
+        
 
 
-
+def select_data_alpha():
+    config = get_config()
+    connection = create_connection()
+    sql_tag_name = f"SELECT {config['database']['alpha_column_tag']}, {config['database']['alpha_column_value']} FROM {config['database']['data_to_alpha']} is not null"
+    cursor = connection.cursor()
+    try:
+        cursor.execute(sql_tag_name)
+        return [item for item in cursor.fetchall()]
+    except Error as e:
+        logger.warning(f"The error {e} occurred")
+    finally: 
+        cursor.close()
+        connection.close()
