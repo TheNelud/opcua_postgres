@@ -84,11 +84,9 @@ def process_postgres(client, to_which_table):
 
 def process_alpha(client):
     tags = select_data_alpha()
-    i = 0
     for element in tags:
-        i += 1
         print(element)
-        node = client.get_node(f'ns=2;i={i}')
+        node = client.get_node(f'ns=1;s={element[0]}')
         node.set_value(element[1])
         node.get_data_value()
 

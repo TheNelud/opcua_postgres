@@ -6,7 +6,6 @@ import pytz
 from psycopg2 import *
 from psycopg2._psycopg import Error
 
-
 logger = log.get_logger(__name__)
 
 
@@ -47,7 +46,7 @@ def select_tags():
         return [i for i in cursor.fetchall()]
     except Error as e:
         logger.warning(f"The error {e} occurred")
-    finally: 
+    finally:
         cursor.close()
         connect.close()
 
@@ -77,8 +76,6 @@ def insert_tags_values(dict_value, to_which_table):
             connect.commit()
         except Error as e:
             logger.warning(f"The error {e} occurred")
-        
-        
 
 
 def select_data_alpha():
@@ -91,6 +88,6 @@ def select_data_alpha():
         return [item for item in cursor.fetchall()]
     except Error as e:
         logger.warning(f"The error {e} occurred")
-    finally: 
+    finally:
         cursor.close()
         connection.close()
