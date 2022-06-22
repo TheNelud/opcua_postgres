@@ -22,14 +22,20 @@
 
 3.Поставить библиотеки в окружение
 	pip3.9.0 install schedule-1.1.0-py2.py3-none-any.whl
-	pip3.9.0 install psycopg2-2.9.3-cp310-cp310-win_amd64.whl
-	pip3.9.0 install lxml-4.9.0-pp39-pypy39_pp73-manylinux_2_17_x86_64.manylinux2014_x86_64.manylinux_2_24_x86_64.whl
-	pip3.9.0 install six-1.16.0-py2.py3-none-any.whl
-	pip3.9.0 install pytz-2022.1-py2.py3-none-any.whl
-	pip3.9.0 install cryptography
+			psycopg2-2.9.3-cp310-cp310-win_amd64.whl
+			lxml-4.9.0-pp39-pypy39_pp73-manylinux_2_17_x86_64.manylinux2014_x86_64.manylinux_2_24_x86_64.whl
+			six-1.16.0-py2.py3-none-any.whl
+			pytz-2022.1-py2.py3-none-any.whl
+			cryptography318-0.3.2-py3-none-any.whl
+			trollius-2.2.1-cp27-cp27m-win_amd64.whl
+			futures3-1.0.0-py3-none-any.whl
+			enum34-1.1.10-py3-none-any.whl
+			python_dateutil-2.8.2-py2.py3-none-any.whl
 	
 	Устанавиливаем opcua-0.98.13
 	sudo tar xvt opcua-0.98.13.tar.gz
+	cd opcua-0.98.13
+	py3.9.0 setup.py
 	Копируем содержимое папки в ./vevn/Lib/site-packages/ ... молимся чтобы подсосало
 
 4.Запустим ради прикола, чисто проверить 
