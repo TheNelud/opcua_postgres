@@ -7,22 +7,25 @@ from opcua.ua.uaerrors._auto import BadNoCommunication
 from distributor import *
 
 config = get_config()
-logger = log.get_logger(__name__)
+# logger = log.get_logger(__name__)
 
 
 def create_client_post_to_post(to_which_table):
     try:
         client = Client(
             ("opc.tcp://" + config['opcserver_master']['opc_host'] + ":" + config['opcserver_master']['opc_port']))
-        logger.info(
-            f"Connection to master server: opc.tcp://{config['opcserver_master']['opc_host']}:{config['opcserver_master']['opc_port']}")
+        print("Connection to master server: opc.tcp://"+config['opcserver_master']['opc_host']+":"+config['opcserver_master']['opc_port']+"\"")
+        # logger.info(
+        #     "Connection to master server: opc.tcp://"+config['opcserver_master']['opc_host']+":"+config['opcserver_master']['opc_port']+"\"")
         client.connect()
         process_postgres(client, to_which_table)
     except Exception:
         client = Client(
             ("opc.tcp://" + config['opcserver_slave']['opc_host'] + ":" + config['opcserver_slave']['opc_port']))
-        logger.warning(
-            f"Connection to slave server: opc.tcp://{config['opcserver_master']['opc_host']}:{config['opcserver_master']['opc_port']}")
+        print("Connection to master server: opc.tcp://" + config['opcserver_slave']['opc_host'] + ":" + config['opcserver_slave']['opc_port'] + "\"")
+        # logger.warning(
+        #     "Connection to master server: opc.tcp://" + config['opcserver_slave']['opc_host'] + ":" + config['opcserver_slave']['opc_port'] + "\"")
+
         client.connect()
         process_postgres(client, to_which_table)
     finally:
@@ -33,15 +36,18 @@ def create_client_post_alpha():
     try:
         client = Client(("opc.tcp://admin@" + config['opcserver_master']['opc_host'] + ":" + config['opcserver_master'][
             'opc_port']))
-        logger.info(
-            f"Connection to master server: opc.tcp://{config['opcserver_master']['opc_host']}:{config['opcserver_master']['opc_port']}")
+        print("Connection to master server: opc.tcp://"+config['opcserver_master']['opc_host']+":"+config['opcserver_master']['opc_port']+"\"")
+        # logger.info(
+        #     "Connection to master server: opc.tcp://"+config['opcserver_master']['opc_host']+":"+config['opcserver_master']['opc_port']+"\"")
         client.connect()
         process_alpha(client)
     except Exception:
         client = Client(
             ("opc.tcp://admin@" + config['opcserver_slave']['opc_host'] + ":" + config['opcserver_slave']['opc_port']))
-        logger.warning(
-            f"Connection to slave server: opc.tcp://{config['opcserver_master']['opc_host']}:{config['opcserver_master']['opc_port']}")
+        print("Connection to master server: opc.tcp://" + config['opcserver_slave']['opc_host'] + ":" + config['opcserver_slave']['opc_port'] + "\"")
+        # logger.warning(
+            # f"Connection to slave server: opc.tcp://{config['opcserver_master']['opc_host']}:{config['opcserver_master']['opc_port']}")
+            # "Connection to master server: opc.tcp://" + config['opcserver_slave']['opc_host'] + ":" + config['opcserver_slave']['opc_port'] + "\"")
         client.connect()
         process_alpha(client)
     finally:
@@ -53,12 +59,12 @@ def process_postgres(client, to_which_table):
 
     dict_value = {}
 
-    logger.info("Данные прочитаны с базы данных")
+    # logger.info("Данные прочитаны с базы данных")
 
     counter = 0
     for tag in [elem[0] for elem in tags]:
         for elem in [elem[1] for elem in tags]:
-            node = client.get_node(f"ns=1;s=" + str(tag))
+            node = client.get_node("ns=1;s=" + str(tag))
             # print(node)
             try:
                 value = node.get_value()
@@ -69,15 +75,20 @@ def process_postgres(client, to_which_table):
             # print("Status code: " + e)
     print(dict_value)
     if counter > 0:
-        logger.warning("Пустые значения")
-    logger.info("Данные собраны с сервера opc")
+        pass
+        print("Пустые значения")
+        # logger.warning("Пустые значения")
+    print("Данные собраны с сервера opc")
+    # logger.info("Данные собраны с сервера opc")
 
     for key in dict_value:
-        logger.info("{0} : {1}".format(key, dict_value[key]))
+        print("{0} : {1}".format(key, dict_value[key]))
+        # logger.info("{0} : {1}".format(key, dict_value[key]))
 
     insert_tags_values(dict_value, to_which_table)
 
-    logger.info("Данные отправлены в базу данных")
+    # logger.info("Данные отправлены в базу данных")
+    print("Данные собраны с сервера opc")
 
 
 # TODO: Отправление из базы данных на сервер Alpha
@@ -86,7 +97,7 @@ def process_alpha(client):
     tags = select_data_alpha()
     for element in tags:
         print(element)
-        node = client.get_node(f'ns=1;s={element[0]}')
+        node = client.get_node('ns=1;s='+str(element[0]))
         node.set_value(element[1])
         node.get_data_value()
 
